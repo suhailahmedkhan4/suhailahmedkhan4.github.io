@@ -1,0 +1,94 @@
+.intro{
+    background-color: white;
+    display: flex;
+
+    .left{
+        flex: 0.5;
+        overflow: hidden;
+        
+        
+
+        .imageContainer{
+            width: 470px;
+            height: 652px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10%;
+            overflow: hidden;
+            
+            
+            
+
+
+
+            img{
+                width: 100%;
+                height: 100%;
+                
+
+            }
+        }
+
+    }
+    .right{
+        flex: 0.5;
+        position: relative;
+        
+        .wrapper{
+            width: 100%;
+            height: 100%;
+            padding-left: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            h1{
+                font-style: 60px;
+                margin: 10px 0;
+            }
+            h2{
+                font-size: 35px;
+            }
+            h3{
+                font-size: 30px;
+
+                span{
+                    font-size: 30px;
+                    color: crimson;
+                }
+
+                .ityped-cursor{
+                    animation: blink 1s infinite;
+                }
+
+                @keyframes blink {
+                    50%{
+                        opacity: 1;
+                    }
+                    100%{
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+        a{
+           position: absolute;
+           bottom: 10px; 
+           left: 40%;
+
+           img{
+               width: 30px;
+               animation: arrowBlink 2s infinite;
+           }
+           @keyframes arrowBlink {
+               100%{
+                opacity: 0;
+               }
+           }
+        }
+    }
+}
