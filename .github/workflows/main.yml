@@ -13,20 +13,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Python 2
+      - name: Set up Python 2.7
         run: |
           sudo apt-get update
-          sudo apt-get install -y python2
-          python2 --version  # Confirm Python 2 is installed
+          sudo apt-get install -y python2.7 python2.7-distutils
+          python2.7 --version  # Verify Python 2.7 is installed
 
-      # Add your additional build steps here
+      - name: Install pip2
+        run: |
+          curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
+          python2.7 get-pip.py  # Install pip for Python 2.7
+          pip2 --version  # Verify pip2 is installed
+
       - name: Install dependencies
         run: |
-          # Install dependencies for your project
-          # You may need to use pip2 for Python 2 installations
-          pip2 install -r requirements.txt
+          pip2 install -r requirements.txt  # Use pip2 to install dependencies
 
       - name: Run tests
         run: |
-          # Run tests (or any other command you need)
-          python2 -m unittest discover
+          python2.7 -m unittest discover  # Run tests using Python 2.7
+
