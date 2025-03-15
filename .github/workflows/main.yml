@@ -13,23 +13,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Python 2.7
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y python2.7 python2.7-distutils
-          python2.7 --version  # Verify Python 2.7 is installed
-
-      - name: Install pip2
-        run: |
-          curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
-          python2.7 get-pip.py  # Install pip for Python 2.7
-          pip2 --version  # Verify pip2 is installed
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11'  # Set up Python 3.11 (you can change to any version like 3.10, 3.9, etc.)
 
       - name: Install dependencies
         run: |
-          pip2 install -r requirements.txt  # Use pip2 to install dependencies
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # Use pip to install dependencies for Python 3
 
       - name: Run tests
         run: |
-          python2.7 -m unittest discover  # Run tests using Python 2.7
-
+          python -m unittest discover  # Run tests using Python 3
