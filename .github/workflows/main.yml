@@ -1,0 +1,32 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python 2
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python2
+          python2 --version  # Confirm Python 2 is installed
+
+      # Add your additional build steps here
+      - name: Install dependencies
+        run: |
+          # Install dependencies for your project
+          # You may need to use pip2 for Python 2 installations
+          pip2 install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          # Run tests (or any other command you need)
+          python2 -m unittest discover
